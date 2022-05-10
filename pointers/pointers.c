@@ -15,7 +15,13 @@
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y!='\0')
+    {
+        *x=*y;
+        x++;
+        y++;
+    }
+    *x='\0';
 }
 
 /*
@@ -28,11 +34,15 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, char c)
 {
-
+    while (*str!=c)
+    {
+        str++;
+    }
+    return str;
 }
 
 /*
-    Searches the input string `haystack` for the first instance of
+    Searches in the input string `haystack` for the first instance of
     the string `needle`. This function returns a pointer that points
     to the first instance of the string `needle` in the input
     string `haystack`. 
@@ -41,7 +51,22 @@ char *find_char(char *str, char c)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    char *n,*h;
+    while (*haystack != '\0')
+    {
+        h= haystack;
+        n = needle;
+        while(*h==*n && *n!='\0' && *h!='\0')
+        {
+            h++;
+            n++;
+        }
+        if (*n=='\0')
+        {
+            return haystack;
+        }
+        haystack++;
+    }
 }
 
 #ifndef TESTING
